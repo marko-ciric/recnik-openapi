@@ -1,0 +1,297 @@
+openapi: 3.0.0
+info:
+  title: RSSJ API
+  description: RSSJ API
+  version: 1.0.0
+servers:
+  - url: https://rssj.jerteh.rs/api
+paths:
+  /getPos:
+    get:
+      summary: Get Part of Speech
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /getWordsStartingWith:
+    get:
+      summary: Get words starting with a given prefix
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+  /getWordsContaining:
+    get:
+      summary: Get words containing a given substring
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+  /getWordsEndingWith:
+    get:
+      summary: Get words ending with a given suffix
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+  /getDomains:
+    get:
+      summary: Get domains
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /getWordsForDomains:
+    get:
+      summary: Get words for given domains
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+  /getOneLetterOff:
+    get:
+      summary: Get words one letter off from the input
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+
+  /getWordFull:
+    get:
+      summary: Get full information for a word
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /getLatin:
+    get:
+      summary: Get Latin version of the word
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /getDescription:
+    get:
+      summary: Get description for a word
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /getAllWordsList:
+    get:
+      summary: Get list of all words
+      parameters:
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /entry:
+    get:
+      summary: Get a single entry
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: integer
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /entryHtml:
+    get:
+      summary: Get a single entry in HTML format
+      parameters:
+        - name: input
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: api_key
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/html:
+              schema:
+                type: string
