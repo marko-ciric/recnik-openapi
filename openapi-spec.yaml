@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://rssj.jerteh.rs/api
 paths:
-  /getPos:
+  /pos:
     get:
       summary: Get Part of Speech
       parameters:
@@ -23,13 +23,23 @@ paths:
               schema:
                 type: object
 
-  /getWordsStartingWith:
+  /words:
     get:
-      summary: Get words starting with a given prefix
+      summary: Get words starting, containing or ending with a given substring
       parameters:
-        - name: input
+        - name: startingWith 
           in: query
-          required: true
+          required: false 
+          schema:
+            type: string
+        - name: containing 
+          in: query
+          required: false 
+          schema:
+            type: string
+        - name: endingWith 
+          in: query
+          required: false 
           schema:
             type: string
         - name: api_key
@@ -46,56 +56,7 @@ paths:
                 type: array
                 items:
                   type: object
-
-  /getWordsContaining:
-    get:
-      summary: Get words containing a given substring
-      parameters:
-        - name: input
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: api_key
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-
-  /getWordsEndingWith:
-    get:
-      summary: Get words ending with a given suffix
-      parameters:
-        - name: input
-          in: query
-          required: true
-          schema:
-            type: string
-        - name: api_key
-          in: query
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-
-  /getDomains:
+  /domains:
     get:
       summary: Get domains
       parameters:
@@ -119,7 +80,7 @@ paths:
                 items:
                   type: string
 
-  /getWordsForDomains:
+  /wordsForDomains:
     get:
       summary: Get words for given domains
       parameters:
@@ -143,7 +104,7 @@ paths:
                 items:
                   type: object
 
-  /getOneLetterOff:
+  /oneLetterOff:
     get:
       summary: Get words one letter off from the input
       parameters:
@@ -167,7 +128,7 @@ paths:
                 items:
                   type: object
 
-  /getWordFull:
+  /wordFull:
     get:
       summary: Get full information for a word
       parameters:
